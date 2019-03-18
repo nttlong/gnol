@@ -54,7 +54,7 @@ class __controller_wrapper__(object):
 
         def handler():
             from . base_model import BaseModel
-            model = BaseModel()
+            model = BaseModel(self.instance.application)
             return getattr(self.instance,"on_get")(model)
         handler.__name__ = self.controller_class.__module__.replace(".", "_")
 

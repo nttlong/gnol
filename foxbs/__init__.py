@@ -12,6 +12,7 @@ REPO_ROOT = None
 
 
 def create_flask_app(name,path_to_apps):
+    # import jinja2
     import os
     global APPS_PATH
     global REPO_ROOT
@@ -21,12 +22,25 @@ def create_flask_app(name,path_to_apps):
     from . import apps
     from flask import Flask
     from flask_wtf.csrf import CSRFProtect
+    from flask_mako import MakoTemplates
+
+
     flask_application = Flask(
         name,
         template_folder=REPO_ROOT,
         static_url_path='/resource',
-        static_folder=os.sep.join([APPS_PATH,"static"]))
+        static_folder=os.sep.join([APPS_PATH ,"static"]))
     flask_application.config.from_object('config')
+    mako = MakoTemplates(flask_application)
+    # environment = jinja2.Environment(
+    #     loader=flask_application.jinja_loader,
+    #     variable_start_string = '@{',
+    #     variable_end_string = '}'
+    # )
+    # fx = flask_application.create_jinja_environment()
+    # fx.variable_start_string = "${"
+    # fx.variable_end_string = "}"
+    # flask_application.jinja_env = fx
 
     CSRFProtect(flask_application)
     apps.load_apps(path_to_apps, flask_application)
