@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a15196a8-5820-43a4-9187-6a18ce1598f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/ui/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/ui/controllers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/ui/controllers/commons/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/ui/controllers/index_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/ui/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foxbs/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foxbs/base_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foxbs/base_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foxbs/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gnol.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gnol.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foxbs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/foxbs/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foxbs/controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/foxbs/controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +12,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/ui/controllers/index_controller.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -70,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/foxbs/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="59" column="54" lean-forward="true" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
+            <state relative-caret-position="145">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -132,7 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/routes.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test.py" />
@@ -153,6 +145,7 @@
         <option value="$PROJECT_DIR$/foxbs/__init__.py" />
         <option value="$PROJECT_DIR$/apps/ui/__init__.py" />
         <option value="$PROJECT_DIR$/foxbs/controllers.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -173,27 +166,6 @@
             <path>
               <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
               <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
-              <item name="foxbs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -319,18 +291,18 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19508196" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19508196" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3897181" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.47408208" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.47408208" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32937366" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.47300217" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.58099353" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3736501" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -428,13 +400,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/ui/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/ui/views/index.html" />
     <entry file="file://$PROJECT_DIR$/apps/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -488,8 +454,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/foxbs/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="59" column="54" lean-forward="true" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
+        <state relative-caret-position="145">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
