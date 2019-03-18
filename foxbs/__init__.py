@@ -21,7 +21,11 @@ def create_flask_app(name,path_to_apps):
     from . import apps
     from flask import Flask
     from flask_wtf.csrf import CSRFProtect
-    flask_application = Flask(name, template_folder=REPO_ROOT)
+    flask_application = Flask(
+        name,
+        template_folder=REPO_ROOT,
+        static_url_path='/resource',
+        static_folder=os.sep.join([APPS_PATH,"static"]))
     flask_application.config.from_object('config')
 
     CSRFProtect(flask_application)
