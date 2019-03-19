@@ -71,7 +71,7 @@ class __controller_wrapper__(object):
             if request.method == "GET":
                 return getattr(self.instance,"on_get")(model)
             if request.method == "POST":
-                if request.headers['Ajax-Post']:
+                if request.headers.has_key('Ajax-Post'):
                     from .json_convert import json_serial, to_json, from_json
                     __load_request_form__(model.client_post, from_json(request.data))
                     method = getattr(self.instance, request.headers['Ajax-Post'])

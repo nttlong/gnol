@@ -36,7 +36,7 @@ def json_serilize_dict(obj):
                 x:json_serial(obj[x])
             })
         else:
-            print type(obj[x])
+            print (type(obj[x]))
 
     return ret
 

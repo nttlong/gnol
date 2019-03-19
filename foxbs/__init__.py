@@ -23,7 +23,7 @@ def create_flask_app(name,path_to_apps):
     from flask import Flask
     from flask_session import Session
     from flask_wtf.csrf import CSRFProtect
-    from flask_mako import MakoTemplates
+    # from flask_mako import MakoTemplates
     from datetime import timedelta
 
 
@@ -38,7 +38,7 @@ def create_flask_app(name,path_to_apps):
     flask_application.config['SESSION_PERMANENT'] = True
     flask_application.config['PERMANENT_SESSION_LIFETIME'] = timedelta(10)
     Session(flask_application)
-    mako = MakoTemplates(flask_application)
+    # mako = MakoTemplates(flask_application)
     # environment = jinja2.Environment(
     #     loader=flask_application.jinja_loader,
     #     variable_start_string = '@{',
@@ -49,6 +49,6 @@ def create_flask_app(name,path_to_apps):
     # fx.variable_end_string = "}"
     # flask_application.jinja_env = fx
 
-    fx = CSRFProtect(flask_application)
+    # fx = CSRFProtect(flask_application)
     apps.load_apps(path_to_apps, flask_application)
     return flask_application
