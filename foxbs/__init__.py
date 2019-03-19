@@ -21,8 +21,10 @@ def create_flask_app(name,path_to_apps):
     global flask_application
     from . import apps
     from flask import Flask
+    from flask_session import Session
     from flask_wtf.csrf import CSRFProtect
     from flask_mako import MakoTemplates
+    from datetime import timedelta
 
 
     flask_application = Flask(
@@ -31,6 +33,11 @@ def create_flask_app(name,path_to_apps):
         static_url_path='/resource',
         static_folder=os.sep.join([APPS_PATH ,"static"]))
     flask_application.config.from_object('config')
+    flask_application.secret_key = 'xz12453'
+    flask_application.config['SESSION_TYPE'] = 'filesystem'
+    flask_application.config['SESSION_PERMANENT'] = True
+    flask_application.config['PERMANENT_SESSION_LIFETIME'] = timedelta(10)
+    Session(flask_application)
     mako = MakoTemplates(flask_application)
     # environment = jinja2.Environment(
     #     loader=flask_application.jinja_loader,
@@ -42,6 +49,6 @@ def create_flask_app(name,path_to_apps):
     # fx.variable_end_string = "}"
     # flask_application.jinja_env = fx
 
-    CSRFProtect(flask_application)
+    fx = CSRFProtect(flask_application)
     apps.load_apps(path_to_apps, flask_application)
     return flask_application

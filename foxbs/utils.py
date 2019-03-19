@@ -58,15 +58,9 @@ def load_app_controller(path_to_app):
 
     for x in files_in_controller_dir:
         controller_name = "apps."+app_module_name+".controllers."+os.path.splitext(os.path.basename(x))[0]
-
         mdl = importlib.import_module(controller_name)
-        setattr(mdl,"application",app_module)
+        setattr(mdl,"application", app_module)
         ret_controllers.append(mdl)
-        #
-        # if sys.version_info[0] == 3:
-        #     from importlib.machinery import SourceFileLoader
-        #     mdl = SourceFileLoader(controller_name, x).load_module()
-        #     ret_controllers.append(mdl)
     return ret_controllers
 
 
@@ -82,8 +76,9 @@ def load_apps(path_to_apps, flask_application):
         })
     return ret
 
+
 def is_app_package(mdl):
-    if not hasattr(mdl,"settings"):
+    if not hasattr(mdl, "settings"):
         raise Exception("settings was not found in {0}".format(mdl))
 
 

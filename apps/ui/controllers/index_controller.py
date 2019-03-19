@@ -11,3 +11,8 @@ class IndexController(test001):
         pass
     def on_get(self,model):
         return self.render(model)
+    def test(self,model):
+        return self.to_json(dict(
+            a=1
+        ))
+

@@ -104,6 +104,13 @@ mdl.service("$ajax",[function(){
         }
     }
     executor.prototype.readCookie=function(name) {
+        if($('meta[name=csrf-token]').length>0){
+            debugger;
+            return $('meta[name=csrf-token]').attr('content');
+        }
+        if($("[name='csrf_token']").length>0){
+            return $("[name='csrf_token']").val();
+        }
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
         for(var i=0;i < ca.length;i++) {

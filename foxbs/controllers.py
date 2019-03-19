@@ -53,15 +53,45 @@ class __controller_wrapper__(object):
         self.instance.template_path = os.sep.join([app_module_name.replace(".",os.sep),"templates",self.template])
 
         def handler():
-            from . base_model import BaseModel
+            from flask import request
+            from flask import make_response
+            from flask import session
+            from flask_wtf import csrf
+
+            from . base_model import BaseModel, __load_request_form__
+
             model = BaseModel(self.instance.application)
-            return getattr(self.instance,"on_get")(model)
+            model.server.response = make_response()
+            if not session.get("csrftoken"):
+                session["csrftoken"] = csrf.generate_csrf()
+            model.server.csrf = session["csrftoken"]
+
+
+
+            if request.method == "GET":
+                return getattr(self.instance,"on_get")(model)
+            if request.method == "POST":
+                if request.headers['Ajax-Post']:
+                    from .json_convert import json_serial, to_json, from_json
+                    __load_request_form__(model.client_post, from_json(request.data))
+                    method = getattr(self.instance, request.headers['Ajax-Post'])
+                    return method(model)
+                else:
+                    __load_request_form__(model.client_post, request.form)
+                    return getattr(self.instance,"on_post")(model)
+            if request.method == "PUT":
+                return getattr(self.instance,"on_put")(model)
+            if request.method == "DELETE":
+                return getattr(self.instance,"on_delete")(model)
+            if request.method == "PACTH":
+                return getattr(self.instance,"on_patch")(model)
         handler.__name__ = self.controller_class.__module__.replace(".", "_")
 
         if self.instance.application.host_dir == None:
-            foxbs.flask_application.route("/" + self.url)(handler)
+            foxbs.flask_application.add_url_rule("/" + self.url,handler.__name__,handler,methods=['GET','POST','PUT','DELETE','PACTH'])
+
         else:
-            foxbs.flask_application.route("/"+ self.instance.application.host_dir+"/" + self.url)(handler)
+            foxbs.flask_application.add_url_rule("/"+ self.instance.application.host_dir+"/" + self.url, handler.__name__,handler, methods=['GET', 'POST'])
 
         if not hasattr(app_module,"__static_serve__"):
             def static_serve(path):
@@ -77,6 +107,15 @@ class __controller_wrapper__(object):
                 foxbs.flask_application.add_url_rule("/" + self.instance.application.host_dir + "/static/<path:path>",static_serve.__name__, static_serve,methods=['GET'])
 
             x=1
+        if issubclass(type(self.instance),BaseController):
+            from mako.lookup import TemplateLookup
+            self.instance.host_dir = self.instance.application.host_dir
+            self.instance.app_name = self.instance.application.__name__.lstrip("apps.")
+            self.instance.template_dir = os.sep.join([os.path.dirname(self.instance.application.__file__), "templates"])
+            self.instance.rel_template_file = self.template
+            self.instance.full_path_template_file = os.sep.join([self.instance.template_dir, self.instance.rel_template_file])
+            self.instance.mako_lookup = TemplateLookup(directories=[self.instance.template_dir], module_directory='/tmp/mako_modules')
+
 
 
 def controller(url = None, template= None,*args,**kwargs):

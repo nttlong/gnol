@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="test">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="${ server.csrf_token() }">
     <title>Title</title>
+    <script src="${server.static}/client/jquery-3.3.1.min.js"></script>
+    <script src="${server.static}/client/angular.min.js"></script>
+
+    <script src="${server.static}/client/ui.js"></script>
+    <script src="${server.static}/client/ui.directtives/ui.service.ajax.js"></script>
+    <script src="${server.static}/client/ui.directtives/ui.drectives.ajax.js"></script>
+    <script src="${server.static}/client/ui.directtives/ui.directitive.ajax.call.js"></script>
 </head>
-<body>
-${server}<br>
-{{server.to_json(server)}}
-dasdasdad dasd
+<body ng-controller="test">
+    <form action="./" method="POST">
+        <input type="hidden" name="csrf_token" value="${ server.csrf_token() }"/>
+        <input type="text" name="xxx">
+        <input type="submit" value="test"/>
+    </form>
+    {{$root.data}}
+    <ajax url="./">
+        <call data-id="test" data-params="{x:$root.getDate()}" ng-model="$root.data"></call>
+    </ajax>
+<script>
+    var mdl = angular.module("test",["q-ui"]);
+    mdl.controller("test",["$scope",function(scope){
+        scope.$root.getDate=function(){
+            return new Date()
+        }
+        console.log(scope);
+    }]);    
+</script>
 </body>
 </html>
