@@ -92,7 +92,7 @@ def table(name):
                     })
                 if col.is_auto:
                     _kwargs.update({
-                        
+
                     })
                 params += Column(x[0],data_type,**_kwargs),
         tbl = Table(*params)
@@ -106,11 +106,13 @@ def table(name):
 class Field(object):
     def __init__(self,name):
         self.name=name
+    def __lshift__(self, other):
+        return dict(field_name=self.name,value=other)
 
 
 class Fields(object):
     def __init__(self,sqlalchemy_table):
         self.__sqlalchemy_table__ = sqlalchemy_table
-
     def __getattr__(self, item):
-        return Field(item)
+        return getattr(self.__sqlalchemy_table__.columns,item)
+

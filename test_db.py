@@ -1,3 +1,8 @@
+import xsqlalchemy
+from xsqlalchemy import qr
+xsqlalchemy.config.set_connection_string('postgres://postgres:123456@172.16.7.67:5433/fx')
+from datetime import datetime
+# xsqlalchemy.config.set_connection_string("mssql+pyodbc://sa:@cb123@172.16.0.126/hrp")
 # import sqlalchemy as db
 # from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func, MetaData, Table
 # from sqlalchemy.orm import sessionmaker
@@ -21,5 +26,12 @@
 # employees.extend_existing(engine)
 
 from models.systems.users import Users
-fx= Users
-c =fx.id
+from models.hr.position import Positions
+try:
+    qr(Users).insert({
+        Users.email: "rere",
+        Users.username: "dsad",
+        Users.login_fail_count: 0
+    })
+except Exception as ex:
+    x=ex
