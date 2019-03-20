@@ -104,15 +104,61 @@ def table(name):
 
 
 class Field(object):
-    def __init__(self,name):
-        self.name=name
+    def __init__(self, name, col):
+        self.name = name
+        self.col = col
+
     def __lshift__(self, other):
         return dict(field_name=self.name,value=other)
 
+    def __eq__(self, other):
+        self.col = self.col == other
+        return self
+
+    def __gt__(self, other):
+        self.col = self.col > other
+        return self
+
+    def __ge__(self, other):
+        self.col = self.col >= other
+        return self
+
+    def __lt__(self, other):
+        self.col = self.col < other
+        return self
+
+    def __le__(self, other):
+        self.col = self.col <= other
+        return self
+
+    def __ne__(self, other):
+        self.col = self.col != other
+        return self
+
+    def __and__(self, other):
+        from sqlalchemy import and_
+        self.col = and_(self.col,other)
+        return self
+
+    def __or__(self, other):
+        from sqlalchemy import or_
+        self.col = or_(self.col, other)
+        return self
+
+    def __neg__(self):
+        from sqlalchemy import not_
+        self.col = not_(self.col)
+        return self
+
+
+
 
 class Fields(object):
+
     def __init__(self,sqlalchemy_table):
         self.__sqlalchemy_table__ = sqlalchemy_table
+
     def __getattr__(self, item):
-        return getattr(self.__sqlalchemy_table__.columns,item)
+        return Field(item, getattr(self.__sqlalchemy_table__.c, item))
+
 

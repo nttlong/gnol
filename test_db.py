@@ -28,10 +28,19 @@ from datetime import datetime
 from models.systems.users import Users
 from models.hr.position import Positions
 try:
-    qr(Users).insert({
-        Users.email: "rere",
-        Users.username: "dsad",
-        Users.login_fail_count: 0
-    })
+    items = qr(Users).where(
+        Users.username == "xxx"
+    ).select(
+        Users.username,
+        Users.hash_password
+    ).to_list()
+    x=items
+    qr(Users).insert(dict(
+        email="xxx",
+        username ="dsadas dasdsa",
+        login_fail_count= 0,
+        created_on = datetime.utcnow(),
+        xxx=2
+    ))
 except Exception as ex:
     x=ex
