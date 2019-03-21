@@ -13,7 +13,7 @@ class BaseController(object):
         mytemplate = self.mako_lookup.get_template(self.rel_template_file)
         return mytemplate.render(**model.__dict__)
 
-    def to_json(self,data):
+    def to_json(self, data):
         from .json_convert import to_json
         return to_json(data)
 

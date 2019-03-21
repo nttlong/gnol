@@ -1,0 +1,6 @@
+<root>
+    <SECRET_KEY value="12jds*64"/>
+    <SESSION_TYPE value="filesystem"/>
+    <SESSION_PERMANENT value="True" type="bool"/>
+    <CONNECTION_STRING value="postgres://postgres:123456@172.16.7.67:5433/fx"/>
+</root>

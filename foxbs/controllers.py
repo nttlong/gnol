@@ -86,7 +86,6 @@ class __controller_wrapper__(object):
             if request.method == "PACTH":
                 return getattr(self.instance,"on_patch")(model)
         handler.__name__ = self.controller_class.__module__.replace(".", "_")
-
         if self.instance.application.host_dir == None:
             foxbs.flask_application.add_url_rule("/" + self.url,handler.__name__,handler,methods=['GET','POST','PUT','DELETE','PACTH'])
 

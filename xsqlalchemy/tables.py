@@ -1,5 +1,9 @@
 __tables__ = None
 
+__sort_types__ = {
+    "asc":1,
+    "desc":-1
+}
 
 class ColumnInfo(object):
 
@@ -20,6 +24,8 @@ class ColumnInfo(object):
         self.is_auto = is_auto
         self.data_len =data_len
         self.default_value = default_value
+        self.asc = 1
+        self.desc = 1
 
 
 def column(data_type=str,
@@ -47,11 +53,23 @@ def __find_map_types__(data_type):
 
 
 def __extract_columns__(cls):
+    import sys
     ret = []
-    while cls.__bases__[0] != object:
+    __continue__ = True
+
+    if sys.version_info[0] == 2:
+        __continue__ = cls.__bases__.__len__() > 0
+    if sys.version_info[0] == 3:
+        __continue__ = cls.__bases__[0] != object
+
+    while __continue__:
         cols = [(k, v) for k, v in cls.__dict__.items() if (k.__len__()>4 and k[:2]!="__" and k[-2:]!="__") or (k.__len__()<=4)]
         ret.extend(cols)
         cls = cls.__bases__[0]
+        if sys.version_info[0] == 2:
+            __continue__ = cls.__bases__.__len__() > 0
+        if sys.version_info[0] == 3:
+            __continue__ = cls.__bases__[0] != object
     cols = [(k, v) for k, v in cls.__dict__.items() if
             (k.__len__() > 4 and k[:2] != "__" and k[-2:] != "__") or (k.__len__() <= 4)]
     ret.extend(cols)
@@ -99,50 +117,65 @@ def table(name):
         __tables__.update({
             name: tbl
         })
-        return Fields(tbl)
+        return Fields(tbl,columns)
     return wrapper
 
 
+def __get_other_value__(v):
+    if isinstance(v,Field):
+        return v.col
+    else:
+        return v
+
+class __field_value__(object):
+
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+
+
 class Field(object):
+
     def __init__(self, name, col):
         self.name = name
         self.col = col
+        self.sort_by = None
 
     def __lshift__(self, other):
-        return dict(field_name=self.name,value=other)
+        return __field_value__(self.name, other)
 
     def __eq__(self, other):
-        self.col = self.col == other
+        self.col = self.col == __get_other_value__(other)
         return self
 
     def __gt__(self, other):
-        self.col = self.col > other
+        self.col = self.col > __get_other_value__(other)
         return self
 
     def __ge__(self, other):
-        self.col = self.col >= other
+        self.col = self.col >= __get_other_value__(other)
         return self
 
     def __lt__(self, other):
-        self.col = self.col < other
+        self.col = self.col < __get_other_value__(other)
         return self
 
     def __le__(self, other):
-        self.col = self.col <= other
+        self.col = self.col <= __get_other_value__(other)
         return self
 
     def __ne__(self, other):
-        self.col = self.col != other
+        self.col = self.col != __get_other_value__(other)
         return self
 
     def __and__(self, other):
         from sqlalchemy import and_
-        self.col = and_(self.col,other)
+        self.col = and_(self.col, __get_other_value__(other))
         return self
 
     def __or__(self, other):
         from sqlalchemy import or_
-        self.col = or_(self.col, other)
+        self.col = or_(self.col, __get_other_value__(other))
         return self
 
     def __neg__(self):
@@ -150,13 +183,17 @@ class Field(object):
         self.col = not_(self.col)
         return self
 
-
+    def __getattr__(self, item):
+        if __sort_types__[item]:
+            self.sort_by = __sort_types__[item]
+        return self
 
 
 class Fields(object):
 
-    def __init__(self,sqlalchemy_table):
+    def __init__(self,sqlalchemy_table,cols):
         self.__sqlalchemy_table__ = sqlalchemy_table
+        self.columns = cols
 
     def __getattr__(self, item):
         return Field(item, getattr(self.__sqlalchemy_table__.c, item))

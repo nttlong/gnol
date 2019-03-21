@@ -2,6 +2,8 @@
 
 from . import config
 from . query import qr
+from .tables import table, column
+
 
 
 def engine():
