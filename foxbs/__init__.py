@@ -48,18 +48,12 @@ def create_flask_app(name,path_to_apps):
     flask_application.config['SESSION_PERMANENT'] = config.get("SESSION_PERMANENT",True)
     flask_application.config['PERMANENT_SESSION_LIFETIME'] = timedelta(config.get("PERMANENT_SESSION_LIFETIME",30))
     Session(flask_application)
-    # mako = MakoTemplates(flask_application)
-    # environment = jinja2.Environment(
-    #     loader=flask_application.jinja_loader,
-    #     variable_start_string = '@{',
-    #     variable_end_string = '}'
-    # )
-    # fx = flask_application.create_jinja_environment()
-    # fx.variable_start_string = "${"
-    # fx.variable_end_string = "}"
-    # flask_application.jinja_env = fx
+    import logging
+    logging.basicConfig(filename=os.sep.join([REPO_ROOT,config.get("LOG_PATH",""),"logs","debug.log"]), level=logging.DEBUG)
+    logging.debug('This message should go to the log file')
+    logging.info('So should this')
+    logging.warning('And this, too')
 
-    # fx = CSRFProtect(flask_application)
     apps.load_apps(path_to_apps, flask_application)
     global settings
     if not settings:

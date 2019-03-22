@@ -1,3 +1,5 @@
+from itertools import islice
+
 __tables__ = None
 
 __sort_types__ = {
@@ -134,18 +136,51 @@ class __field_value__(object):
         self.value = value
 
 
+class __Binary_Expr__(object):
+
+    def __init__(self,left,right):
+        self.left = left
+        self.right = right
+
+
 class Field(object):
 
-    def __init__(self, name, col):
+    def __init__(self, owner, name, col):
         self.name = name
         self.col = col
         self.sort_by = None
+        self.__alias__ = None
+        self.__owner__= owner
+
+    def __add__(self, other):
+        self.col = self.col + __get_other_value__(other)
+        return self
+
+    def __sub__(self, other):
+        self.col = self.col - __get_other_value__(other)
+        return self
+
+    def __mul__(self, other):
+        self.col = self.col - __get_other_value__(other)
+        return self
+
+    def __div__(self, other):
+        self.col = self.col - __get_other_value__(other)
+        return self
+
+    def __divmod__(self, other):
+        self.col = self.col - __get_other_value__(other)
+        return self
 
     def __lshift__(self, other):
         return __field_value__(self.name, other)
 
     def __eq__(self, other):
         self.col = self.col == __get_other_value__(other)
+        if isinstance(other,Field):
+            if isinstance(self.__owner__, Fields):
+                self.left = self.__owner__.__sqlalchemy_table__
+                self.right = other.__owner__.__sqlalchemy_table__
         return self
 
     def __gt__(self, other):
@@ -169,8 +204,14 @@ class Field(object):
         return self
 
     def __and__(self, other):
+        from  sqlalchemy import Table
         from sqlalchemy import and_
         self.col = and_(self.col, __get_other_value__(other))
+        if hasattr(self,"left"):
+            self.left = __Binary_Expr__(self.left,self.right)
+        if isinstance(other,Field):
+            if hasattr(other,"left"):
+                self.right = __Binary_Expr__(self.left,self.right)
         return self
 
     def __or__(self, other):
@@ -188,6 +229,13 @@ class Field(object):
             self.sort_by = __sort_types__[item]
         return self
 
+    def __rshift__(self, other):
+        if isinstance(other,Field):
+            self.__alias__ = other.name
+        else:
+            self.__alias__ = other
+        return self
+
 
 class Fields(object):
 
@@ -196,6 +244,10 @@ class Fields(object):
         self.columns = cols
 
     def __getattr__(self, item):
-        return Field(item, getattr(self.__sqlalchemy_table__.c, item))
+        if hasattr(self.__sqlalchemy_table__.c, item):
+            return Field(self, item, getattr(self.__sqlalchemy_table__.c, item))
+        else:
+            raise Exception("{0} was not found".format(item))
+
 
 

@@ -1,5 +1,7 @@
 import xsqlalchemy
 from xsqlalchemy import qr
+from xsqlalchemy.query2 import select
+
 import dev_stack
 import foxbs
 from models import hr
@@ -8,18 +10,33 @@ from datetime import datetime
 xsqlalchemy.config.set_connection_string(foxbs.settings.CONNECTION_STRING)
 xsqlalchemy.create_all()
 # try:
-qr_dep = qr(hr.Departments)
-# ret, error = qr_dep.insert(
-#     hr.Departments.name << "TCT",
-#     hr.Departments.created_on << datetime.utcnow(),
-#     hr.Departments.level << 1,
-#     hr.Departments.code << "001"
+# qr_dep = qr(hr.Departments)
+# # ret, error = qr_dep.insert(
+# #     hr.Departments.name << "TCT",
+# #     hr.Departments.created_on << datetime.utcnow(),
+# #     hr.Departments.level << 1,
+# #     hr.Departments.code << "001"
+# # )
+# # qr_dep.where(hr.Departments.code =="001").update(hr.Departments.level_code << "."+ret.id.__str__()+".")
+#
+# qr_dep.sort(hr.Departments.id.desc).outer_join(
+#     hr.Employees, hr.Departments.id == hr.Employees.department_id
+# ).outer_join(
+#     hr.Employees, (hr.Employees.id==hr.Departments.id) & (hr.Employees.code==hr.Departments.code)
+# ).select(
+#     hr.Departments.id >> hr.Departments.xxx,
+#     hr.Departments.id+2 >> "newid",
+#     hr.Departments.name >> "fullname",
+#     hr.Employees.code
 # )
-# qr_dep.where(hr.Departments.code =="001").update(hr.Departments.level_code << "."+ret.id.__str__()+".")
-
-qr_dep.sort(hr.Departments.id.desc)
-df = (qr_dep.to_list())
-x=df
+x= select(
+        hr.Employees.id,
+        hr.Departments.id>>"XXX",
+        hr.Employees.code
+    ).outer_join(
+    (hr.Departments.id == hr.Employees.id) & (hr.Employees.id == hr.Departments.code)
+).where(hr.Employees.code=="XXX")
+print (x)
 # print(ret)
 
 # df = qr(Users).where(
@@ -32,13 +49,14 @@ x=df
 # ).to_pandas_data_frame()
 # x=df
 # for i in range(0,100000):
-#     qr(Users).insert(dict(
+#     ret,error = qr(systems.Users).insert(dict(
 #         email="xxx",
 #         username ="dsadas dasdsa",
 #         login_fail_count= 0,
 #         created_on = datetime.utcnow(),
 #         xxx=2
 #     ))
+#     print (error)
 #     print(i)
 # except Exception as ex:
 #     raise ex

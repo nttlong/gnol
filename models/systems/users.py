@@ -1,4 +1,4 @@
-from xsqlalchemy.tables import table, column
+from xsqlalchemy import table, column, create_index
 import datetime
 from . base import BaseTable
 
@@ -13,6 +13,8 @@ class Users(BaseTable):
     login_fail_count = column(int,is_require=True)
 
 
+create_index(Users,True,Users.username)
+create_index(Users,True,Users.email)
 
 
 

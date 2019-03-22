@@ -6,6 +6,8 @@ class __data__(object):
 
 
 class qr(object):
+
+
     def __init__(self,entity):
         from .config import __connection_string__
         import sqlalchemy as db
@@ -19,6 +21,7 @@ class qr(object):
         self.__limit__ = None
         self.__offset__ = None
         self.__sort__ = None
+        self.__query_set__ = None
 
     def select(self,*args,**kwargs):
         self.__selected_fields__ = list(args)
@@ -50,25 +53,35 @@ class qr(object):
         self.__where__ = args[0]
         return self
 
-    def all(self):
+    def __build_query__(self):
         from sqlalchemy.orm import sessionmaker
+        from sqlalchemy.sql.selectable import Join
         from sqlalchemy import desc, asc
         header = []
         _session = sessionmaker(bind=self.engine)
         session = _session()
         selected_fields = ()
         header_index = 0
-        _qr =session.query(self.entity.__sqlalchemy_table__)
+        _qr = None
         if self.__selected_fields__:
             for x in self.__selected_fields__:
-                header.append(dict(
+                header_item = dict(
                     field=x.name,
                     index=header_index
-                ))
-                field = getattr(self.entity.__sqlalchemy_table__.c, x.name)
+                )
+                if x.__alias__:
+                    header_item["field"] = x.__alias__
+                header.append(header_item)
+
+                field = x.col
+                if x.__alias__:
+                    field = field.label(x.__alias__)
                 selected_fields += (field,)
                 header_index = header_index + 1
             _qr = session.query(*selected_fields)
+            if isinstance(self.__query_set__,Join):
+                _qr = _qr.select_from(self.__query_set__)
+
         else:
             for x in self.entity.columns:
                 header.append(dict(
@@ -79,10 +92,12 @@ class qr(object):
                 selected_fields += (field,)
                 header_index = header_index + 1
             _qr = session.query(*selected_fields)
+            if isinstance(self.__query_set__, Join):
+                _qr = _qr.select_from(self.__query_set__)
         if self.__sort__:
             for x in self.__sort__:
                 if x["sort_by"] == 1:
-                    _qr = _qr.order_by(asc(getattr(self.entity.__sqlalchemy_table__.c,x["field"])))
+                    _qr = _qr.order_by(asc(getattr(self.entity.__sqlalchemy_table__.c, x["field"])))
                 else:
                     _qr = _qr.order_by(desc(getattr(self.entity.__sqlalchemy_table__.c, x["field"])))
         if self.__where__:
@@ -93,9 +108,11 @@ class qr(object):
             _qr._limit = self.__limit__
         if self.__offset__:
             _qr._offset = self.__offset__
+        return header, _qr
 
-        lst = _qr.all()
-        return header, lst
+    def all(self):
+        header, _qr = self.__bulid_query__()
+        return header, _qr.all()
 
     def limit(self, num):
         self.__limit__ = num
@@ -152,3 +169,29 @@ class qr(object):
                 sort_by = x.sort_by
             ))
         return self
+
+    def join(self, entity, expr):
+        from sqlalchemy.sql import Join
+        if isinstance(self.__query_set__, Join):
+            self.__query_set__ = self.__query_set__.join(entity.__sqlalchemy_table__, expr.col)
+        else:
+            self.__query_set__= self.entity.__sqlalchemy_table__.join(entity.__sqlalchemy_table__, expr.col)
+        return self
+
+    def outer_join(self, entity, expr):
+        from sqlalchemy.sql import Join
+        if isinstance(self.__query_set__, Join):
+            self.__query_set__ = self.__query_set__.outerjoin(entity.__sqlalchemy_table__, expr.col)
+        else:
+            self.__query_set__= self.entity.__sqlalchemy_table__.outerjoin(entity.__sqlalchemy_table__, expr.col)
+        return self
+
+    def to_sql_command(self):
+        from sqlalchemy.dialects import postgresql
+
+        h,_qr = self.__build_query__()
+        return _qr.__str__()
+    def __repr__(self):
+        h, _qr = self.__build_query__()
+        return _qr.__str__()
+
