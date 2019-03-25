@@ -1,6 +1,6 @@
 import xsqlalchemy
 from xsqlalchemy import qr
-from xsqlalchemy.query2 import select, union, union_all
+from xsqlalchemy.query2 import select, union, union_all, command
 
 import dev_stack
 import foxbs
@@ -29,26 +29,25 @@ xsqlalchemy.create_all()
 #     hr.Departments.name >> "fullname",
 #     hr.Employees.code
 # )
-x= select(
-        hr.Employees.id,
-        hr.Departments.id>>"XXX",
-        hr.Employees.code
-    ).outer_join(
-    (hr.Departments.id == hr.Employees.id) & (hr.Employees.id == hr.Departments.code)
-).where(hr.Employees.code=="XXX").order_by(hr.Departments.id.desc,hr.Employees.code.asc)
+x= select(systems.Users.email,systems.Users.username)
 
-x2= select(
-        hr.Employees.id,
-        hr.Departments.id>>"XXX",
-        hr.Employees.code
-    ).outer_join(
-    (hr.Departments.id == hr.Employees.id) & (hr.Employees.id == hr.Departments.code)
-).where(hr.Employees.code=="XXX")
 
-y= union_all(x,x2,x,x2)
-v=y.group_by(hr.Departments.code)
-print (v)
-# print(ret)
+cmd= command(x)
+f= cmd.to_frame()
+print f
+# x2= select(
+#         hr.Employees.id,
+#         hr.Departments.id>>"XXX",
+#         hr.Employees.code
+#     ).outer_join(
+#     (hr.Departments.id == hr.Employees.id) & (hr.Employees.id == hr.Departments.code)
+# ).where(hr.Employees.code=="XXX")
+#
+# y= union_all(x,x2,x,x2)
+# v=y.group_by(hr.Departments.code)
+print (x)
+v = command(x).all
+print(x)
 
 # df = qr(Users).where(
 #     Users.username == "xxx"

@@ -234,6 +234,7 @@ class Field(object):
             self.__alias__ = other.name
         else:
             self.__alias__ = other
+        self.col = self.col.label(self.__alias__)
         return self
 
 
