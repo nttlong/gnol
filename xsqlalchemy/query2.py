@@ -1,7 +1,12 @@
 
 class Queryable(object):
+
     def __init__(self,*args):
         import sqlalchemy as db
+        from sqlalchemy.orm.query import Query
+        if isinstance(args[0],Query):
+            self.__query__ =args[0]
+            return
         from .config import __connection_string__
         self.__query__ = None
         self.__header__ = []
@@ -34,19 +39,56 @@ class Queryable(object):
         right_table = expr.right
         while not isinstance(right_table,Table):
             right_table = right_table.right
-        self.__query__ = self.__query__.join(right_table, expr.col)
-        return self
+        ret = Queryable(self.__query__.join(right_table, expr.col))
+        return ret
+
     def outer_join(self,expr):
         from sqlalchemy import Table
         right_table = expr.right
         while not isinstance(right_table,Table):
             right_table = right_table.right
-        self.__query__ = self.__query__.outerjoin(right_table, expr.col)
-        return self
+        ret = Queryable(self.__query__.outerjoin(right_table, expr.col))
+        return ret
 
     def where(self,expr):
-        self.__query__= self.__query__.filter(expr.col)
-        return self
+        ret = Queryable(self.__query__.filter(expr.col))
+        return ret
+
+    def union(self, *args):
+        ret = args[0].__query__
+        for i in range(1, args.__len__(), 1):
+            ret = ret.union(args[i].__query__)
+        return Queryable(ret)
+
+    def group_by(self,*args):
+        cols = ()
+        for x in args:
+            cols+=(x.col,)
+        return Queryable(self.__query__.group_by(*cols))
+
+    def order_by(self,*args):
+        sort = ()
+        for x in args:
+            if x.sort_by == -1:
+                sort +=(x.col.desc(),)
+            else:
+                sort += (x.col.asc(),)
+        return Queryable(self.__query__.order_by(*sort))
+
+
+
 
 def select(*args):
     return Queryable(*args)
+
+def union(*args):
+    ret = args[0].__query__
+    for i in range(1,args.__len__(),1):
+        ret = ret.union(args[i].__query__)
+    return Queryable(ret)
+
+def union_all(*args):
+    ret = args[0].__query__
+    for i in range(1,args.__len__(),1):
+        ret = ret.union_all(args[i].__query__)
+    return Queryable(ret)

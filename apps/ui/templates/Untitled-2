@@ -1,0 +1,2 @@
+SELECT * FROM "departments" LIMIT 1000;
+drop table "departments";

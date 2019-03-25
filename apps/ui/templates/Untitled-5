@@ -1,0 +1,2 @@
+SELECT departments.id AS departments_id, departments.id + 1 AS newid, departments.name AS fullname 
+FROM departments JOIN employees ON departments.id = employees.department_id ORDER BY departments.id DESC

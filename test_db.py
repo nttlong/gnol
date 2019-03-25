@@ -1,6 +1,6 @@
 import xsqlalchemy
 from xsqlalchemy import qr
-from xsqlalchemy.query2 import select
+from xsqlalchemy.query2 import select, union, union_all
 
 import dev_stack
 import foxbs
@@ -35,8 +35,19 @@ x= select(
         hr.Employees.code
     ).outer_join(
     (hr.Departments.id == hr.Employees.id) & (hr.Employees.id == hr.Departments.code)
+).where(hr.Employees.code=="XXX").order_by(hr.Departments.id.desc,hr.Employees.code.asc)
+
+x2= select(
+        hr.Employees.id,
+        hr.Departments.id>>"XXX",
+        hr.Employees.code
+    ).outer_join(
+    (hr.Departments.id == hr.Employees.id) & (hr.Employees.id == hr.Departments.code)
 ).where(hr.Employees.code=="XXX")
-print (x)
+
+y= union_all(x,x2,x,x2)
+v=y.group_by(hr.Departments.code)
+print (v)
 # print(ret)
 
 # df = qr(Users).where(
