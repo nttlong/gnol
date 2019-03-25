@@ -33,6 +33,7 @@ def create_flask_app(name,path_to_apps):
     from flask import Flask
     from flask_session import Session
     from .xml2dict import load_from_file
+    from flask_bcrypt import Bcrypt
     from flask_wtf.csrf import CSRFProtect
     # from flask_mako import MakoTemplates
     from datetime import timedelta

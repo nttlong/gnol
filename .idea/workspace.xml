@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a15196a8-5820-43a4-9187-6a18ce1598f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/auth/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foxbs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/foxbs/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/systems/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/systems/users.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xsqlalchemy/query2.py" beforeDir="false" afterPath="$PROJECT_DIR$/xsqlalchemy/query2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xsqlalchemy/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/xsqlalchemy/tables.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="105">
+              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -27,19 +30,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/sql/elements.py">
+        <entry file="file://$PROJECT_DIR$/auth/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="4464" lean-forward="true" selection-start-line="4464" selection-end-line="4464" />
+            <state relative-caret-position="15">
+              <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/hr/emps.py">
+        <entry file="file://$PROJECT_DIR$/app/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="105">
+              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/foxbs/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/systems/users.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/sql/elements.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="4464" selection-start-line="4464" selection-end-line="4464" />
             </state>
           </provider>
         </entry>
@@ -47,20 +80,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xsqlalchemy/query.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="145" column="21" lean-forward="true" selection-start-line="131" selection-start-column="8" selection-end-line="145" selection-end-column="21" />
-              <folding>
-                <element signature="e#30#90#0" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="11" selection-start-line="2" selection-end-line="4" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xsqlalchemy/query2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="131" column="30" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
+            <state relative-caret-position="106">
+              <caret line="149" column="27" lean-forward="true" selection-start-line="149" selection-start-column="27" selection-end-line="149" selection-end-column="27" />
               <folding>
                 <element signature="e#64#931#0" />
                 <element signature="e#965#996#0" />
@@ -71,10 +101,10 @@
                 <element signature="e#1766#1820#0" />
                 <element signature="e#2004#2125#0" />
                 <element signature="e#2247#2462#0" />
+                <element signature="e#2651#3987#0" />
                 <element signature="e#2737#2861#0" />
                 <element signature="e#3009#3096#0" />
                 <element signature="e#3152#3345#0" />
-                <element signature="e#1752#1775#0" />
                 <element signature="e#2036#2165#0" />
                 <element signature="e#2192#2324#0" />
                 <element signature="e#3129#3322#0" />
@@ -84,46 +114,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="1927" selection-start-line="1927" selection-end-line="1927" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/sql/default_comparator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3135">
-              <caret line="236" selection-start-line="236" selection-end-line="236" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/util/_collections.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3000">
-              <caret line="211" selection-start-line="211" selection-end-line="211" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xsqlalchemy/tables.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="235">
               <caret line="236" column="49" selection-start-line="236" selection-start-column="49" selection-end-line="236" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/inspection.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
             </state>
           </provider>
         </entry>
@@ -157,7 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/foxbs/apps.py" />
         <option value="$PROJECT_DIR$/apps/ui/settings.py" />
         <option value="$PROJECT_DIR$/apps/__init__.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
@@ -199,15 +192,16 @@
         <option value="$PROJECT_DIR$/esqueryable/dynamic_object.py" />
         <option value="$PROJECT_DIR$/xsqlalchemy/Index.py" />
         <option value="$PROJECT_DIR$/xsqlalchemy/index.py" />
-        <option value="$PROJECT_DIR$/models/systems/users.py" />
         <option value="$PROJECT_DIR$/xsqlalchemy/__init__.py" />
-        <option value="$PROJECT_DIR$/foxbs/__init__.py" />
         <option value="$PROJECT_DIR$/models/hr/emps.py" />
         <option value="$PROJECT_DIR$/models/hr/departments.py" />
         <option value="$PROJECT_DIR$/xsqlalchemy/query.py" />
         <option value="$PROJECT_DIR$/xsqlalchemy/tables.py" />
-        <option value="$PROJECT_DIR$/test_db.py" />
+        <option value="$PROJECT_DIR$/foxbs/__init__.py" />
+        <option value="$PROJECT_DIR$/auth/__init__.py" />
+        <option value="$PROJECT_DIR$/models/systems/users.py" />
         <option value="$PROJECT_DIR$/xsqlalchemy/query2.py" />
+        <option value="$PROJECT_DIR$/test_db.py" />
       </list>
     </option>
   </component>
@@ -233,7 +227,23 @@
             <path>
               <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
               <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
-              <item name="xsqlalchemy" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gnol-foxbs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gnol-foxbs" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="systems" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -243,7 +253,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/foxbs/json_convert.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../readdocs/readthedocs.org" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -417,14 +427,14 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49945354" weight="0.3887689" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.7705696" visible="true" weight="0.22707424" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.7700422" visible="true" weight="0.51637554" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32937366" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49841774" weight="0.21943231" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.22943038" side_tool="true" visible="true" weight="0.22707424" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.7284153" weight="0.300216" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4978903" weight="0.21943231" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.2299578" side_tool="true" visible="true" weight="0.51637554" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.7278481" weight="0.29912663" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -438,22 +448,10 @@
           <line>4</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test_db.py</url>
-          <line>49</line>
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv3/lib/python3.6/site-packages/sqlalchemy/connectors/pyodbc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/foxbs/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -639,16 +637,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/systems/users.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xsqlalchemy/index.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -676,27 +664,10 @@
     <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/logging/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="957" lean-forward="true" selection-start-line="957" selection-end-line="957" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/foxbs/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
@@ -742,44 +713,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/sql/elements.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="4464" selection-start-line="4464" selection-end-line="4464" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/foxbs/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/systems/users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="36" lean-forward="true" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="1927" selection-start-line="1927" selection-end-line="1927" />
+        <state relative-caret-position="87">
+          <caret line="1894" lean-forward="true" selection-start-line="1894" selection-end-line="1894" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xsqlalchemy/query.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="145" column="21" lean-forward="true" selection-start-line="131" selection-start-column="8" selection-end-line="145" selection-end-column="21" />
-          <folding>
-            <element signature="e#30#90#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv2/local/lib/python2.7/site-packages/sqlalchemy/sql/elements.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="4464" lean-forward="true" selection-start-line="4464" selection-end-line="4464" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" column="11" selection-start-line="2" selection-end-line="4" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xsqlalchemy/query2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="131" column="30" selection-start-line="131" selection-start-column="30" selection-end-line="131" selection-end-column="30" />
+        <state relative-caret-position="106">
+          <caret line="149" column="27" lean-forward="true" selection-start-line="149" selection-start-column="27" selection-end-line="149" selection-end-column="27" />
           <folding>
             <element signature="e#64#931#0" />
             <element signature="e#965#996#0" />
@@ -790,13 +779,23 @@
             <element signature="e#1766#1820#0" />
             <element signature="e#2004#2125#0" />
             <element signature="e#2247#2462#0" />
+            <element signature="e#2651#3987#0" />
             <element signature="e#2737#2861#0" />
             <element signature="e#3009#3096#0" />
             <element signature="e#3152#3345#0" />
-            <element signature="e#1752#1775#0" />
             <element signature="e#2036#2165#0" />
             <element signature="e#2192#2324#0" />
             <element signature="e#3129#3322#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,6 @@
 import xsqlalchemy
 from xsqlalchemy import qr
-from xsqlalchemy.query2 import select, union, union_all, command
+from xsqlalchemy.query2 import select, union, union_all, command, insert
 
 import dev_stack
 import foxbs
@@ -29,13 +29,21 @@ xsqlalchemy.create_all()
 #     hr.Departments.name >> "fullname",
 #     hr.Employees.code
 # )
-x= select(systems.Users.email,systems.Users.username)
-
-
-cmd= command(x)
-f= cmd.to_frame()
-print f
-# x2= select(
+# x= select(systems.Users.email,systems.Users.username)
+import datetime
+ret,error = insert(
+    systems.Users,
+    systems.Users.username<<"root1",
+    systems.Users.email<<"vvv00",
+    systems.Users.hash_password<<"88889",
+    systems.Users.login_fail_count<<0,
+    systems.Users.created_on<< datetime.datetime.utcnow()
+)
+print  error
+# cmd= command(x)
+# f= cmd.to_frame()
+# print f
+# # x2= select(
 #         hr.Employees.id,
 #         hr.Departments.id>>"XXX",
 #         hr.Employees.code
@@ -45,9 +53,9 @@ print f
 #
 # y= union_all(x,x2,x,x2)
 # v=y.group_by(hr.Departments.code)
-print (x)
-v = command(x).all
-print(x)
+# print (x)
+# v = command(x).all
+# print(x)
 
 # df = qr(Users).where(
 #     Users.username == "xxx"

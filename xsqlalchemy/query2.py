@@ -81,6 +81,7 @@ class Queryable(object):
     def offset(self,num):
         return Queryable(self.__query__.offset(num))
 
+
 class Command(object):
     def __init__(self,qr,engine):
         self.qr=qr
@@ -131,6 +132,37 @@ class Command(object):
                 y = y + 1
             yield ret_obj(dic)
 
+class __data__(object):
+    def __init__(self, data):
+        self.__dict__.update(data)
+
+def insert(entity,*args):
+    from .config import __connection_string__
+    import sqlalchemy as db
+    from .tables import Fields
+    if not isinstance(entity, Fields):
+        raise Exception("entity is not a table")
+    engine = db.create_engine(__connection_string__)
+    try:
+        from sqlalchemy import insert, Column
+        from sqlalchemy.orm import sessionmaker
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        data = args
+        data_insert = args[0]
+        if not isinstance(data_insert, dict):
+            data_insert = {}
+            for field in data:
+                data_insert.update({
+                    field.key: field.value
+                })
+
+        ret_insert = engine.execute(entity.__sqlalchemy_table__.insert(), **data_insert)
+        ret_data = __data__(data_insert)
+        ret_data.id = ret_insert.inserted_primary_key[0]
+        return ret_data, None
+    except Exception as ex:
+        return None, ex
 
 def select(*args):
     return Queryable(*args)
